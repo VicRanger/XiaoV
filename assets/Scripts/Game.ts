@@ -21,7 +21,8 @@ export default class Game extends cc.Component {
     }
 
     onSlideRight() {
-        S.player.Walk(1);
+        this.AddIceBlockInfo();
+        S.player.Walk(1, this.PushNextIceBlock, this);
     }
 
     onSlideUp() {
@@ -34,8 +35,8 @@ export default class Game extends cc.Component {
     }
 
     onSlideDown() {
-        this.AddIceBlockInfo();
-        this.PushNextIceBlock();
+
+
     }
 
     //生成一个可用冰块

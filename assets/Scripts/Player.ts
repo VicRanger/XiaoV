@@ -27,7 +27,7 @@ export default class Player extends cc.Component {
         this.speed = S.data.player.speed;
     }
 
-    Walk(dir: number, midFunc = function () { }, target = this) {
+    Walk(dir: number, midFunc = function () { }, target:Object = this) {
         if (this.isWalk) {
             return;
         }
