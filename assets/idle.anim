@@ -1,0 +1,151 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "idle",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 0.6833333333333333,
+  "sample": 60,
+  "speed": 1,
+  "wrapMode": "2",
+  "curveData": {
+    "paths": {
+      "body": {
+        "props": {
+          "scale": [
+            {
+              "frame": 0,
+              "value": {
+                "__type__": "cc.Vec2",
+                "x": 1,
+                "y": 1
+              }
+            },
+            {
+              "frame": 0.2833333333333333,
+              "value": {
+                "__type__": "cc.Vec2",
+                "x": 1,
+                "y": 1.02
+              }
+            },
+            {
+              "frame": 0.6833333333333333,
+              "value": {
+                "__type__": "cc.Vec2",
+                "x": 1,
+                "y": 1
+              }
+            }
+          ],
+          "position": [
+            {
+              "frame": 0,
+              "value": [
+                0,
+                -3
+              ]
+            },
+            {
+              "frame": 0.2833333333333333,
+              "value": [
+                0,
+                8
+              ]
+            },
+            {
+              "frame": 0.6833333333333333,
+              "value": [
+                0,
+                -3
+              ]
+            }
+          ]
+        }
+      },
+      "h": {
+        "props": {
+          "scale": [
+            {
+              "frame": 0,
+              "value": {
+                "__type__": "cc.Vec2",
+                "x": 2.2,
+                "y": 2.2
+              }
+            },
+            {
+              "frame": 0.2833333333333333,
+              "value": {
+                "__type__": "cc.Vec2",
+                "x": 2.4,
+                "y": 2.4
+              }
+            },
+            {
+              "frame": 0.6833333333333333,
+              "value": {
+                "__type__": "cc.Vec2",
+                "x": 2.2,
+                "y": 2.2
+              }
+            }
+          ]
+        }
+      },
+      "eb-1": {
+        "props": {
+          "position": [
+            {
+              "frame": 0,
+              "value": [
+                -248,
+                110
+              ]
+            },
+            {
+              "frame": 0.2833333333333333,
+              "value": [
+                -248,
+                117.3
+              ]
+            },
+            {
+              "frame": 0.6833333333333333,
+              "value": [
+                -248,
+                110
+              ]
+            }
+          ],
+          "active": [
+            {
+              "frame": 0,
+              "value": true
+            }
+          ]
+        }
+      },
+      "eb-2": {
+        "props": {
+          "active": [
+            {
+              "frame": 0,
+              "value": false
+            }
+          ]
+        }
+      },
+      "skate": {
+        "props": {
+          "active": [
+            {
+              "frame": 0,
+              "value": false
+            }
+          ]
+        }
+      }
+    }
+  },
+  "events": []
+}
