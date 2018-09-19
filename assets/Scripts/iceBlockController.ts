@@ -27,6 +27,7 @@ export default class iceBlockController extends cc.Component {
             this.node.removeComponent(cc.PhysicsBoxCollider);
             this.node.removeComponent(cc.RigidBody);
             let iceController: IceController = otherCollider.node.parent.getComponent(IceController);
+            console.log(this.type)
             if (iceController.type == this.type) {
                 this.Matches();
                 iceController.mass += 10;
