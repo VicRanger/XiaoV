@@ -7,6 +7,7 @@ export default class Game extends cc.Component {
     @property
     nextIceBlock: Array<S.iceBlockInfo> = [];
 
+
     onLoad() {
         S.game = this;
         this.node.on("slideleft", this.onSlideLeft, this);
@@ -35,13 +36,17 @@ export default class Game extends cc.Component {
     }
 
     onSlideDown() {
-
+        S.player.ReceiveIceBlock(this.GenerateIceBlockInfo());
 
     }
 
-    //生成一个可用冰块
+    //推入一个可用冰块
     PushNextIceBlock() {
-        let info: S.iceBlockInfo = this.PopIceBlockInfo();
+        let info: S.iceBlockInfo = S.player.PushIceBlock();
+        if (info == null) {
+            console.log("Game.js : 玩家没有持有冰块");
+            return;
+        }
         S.spoutController.GenerateIceBlock(info.type, info.mass);
     }
 

@@ -44,7 +44,7 @@ export default class iceBlockController extends cc.Component {
     }
     MoveToIces() {
         S.SetParent(this.node, this.node.parent.parent);
-        let movement = cc.spawn(cc.moveTo(1, S.icesController.node.position), cc.fadeTo(1, 0), cc.scaleTo(1, 0.1, 0.1).easing(cc.easeCubicActionIn()));
+        let movement = cc.spawn(cc.moveTo(1, S.icesController.node.position), cc.fadeTo(0.25, 0), cc.scaleTo(0.3, 0.1, 0.1).easing(cc.easeCubicActionIn()));
         this.node.runAction(movement);
     }
     Matches() {

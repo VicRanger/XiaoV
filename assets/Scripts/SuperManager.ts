@@ -5,19 +5,12 @@ import IcesContoller from "./IcesController";
 import IceContoller from "./IceController";
 import SpoutController from "./SpoutController";
 export module S {
-    export class iceBlockInfo {
-        constructor(type: string = "yellow", mass: number = 0) {
-            this.type = type;
-            this.mass = mass;
-        }
-        public type: string = "";
-        public mass: number = 0;
-    }
     export var canvas: Canvas = null;
     export var player: Player = null;
     export var game: Game = null;
     export var icesController: IcesContoller = null;
     export var spoutController: SpoutController = null;
+    export var iceInPlayer: cc.Node = null;
     export var SLIDE_DIR: Array<Array<number>> = [[0, -1], [1, 0], [0, 1], [-1, 0]];
     export var DEBUG_DIR: Array<string> = ["右划", "上划", "左划", "下划"];
     export var DegsToRads: Function = function (x: number) {
@@ -70,20 +63,28 @@ export module S {
         },
         ice: {
             red: {
-                reduction: 3,
-                mass: 90,
+                reduction: 1.4,
+                mass: 70,
                 color: cc.color(220, 90, 105, 255)
             },
             blue: {
-                reduction: 3.3,
-                mass: 100,
+                reduction: 1.6,
+                mass: 80,
                 color: cc.color(90, 161, 215, 255)
             },
             yellow: {
-                reduction: 4,
-                mass: 120,
+                reduction: 1.8,
+                mass: 90,
                 color: cc.color(234, 234, 40, 255)
             },
         }
+    }
+    export class iceBlockInfo {
+        constructor(type: string = "yellow", mass: number = 0) {
+            this.type = type;
+            this.mass = mass;
+        }
+        public type: string = "";
+        public mass: number = 0;
     }
 }

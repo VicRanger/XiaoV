@@ -11,6 +11,7 @@ export default class Player extends cc.Component {
     @property
     speed: number = 600;
     isWalk: boolean = false;
+    iceBlockInfo: S.iceBlockInfo = null;
 
     @property(cc.Node)
     startPos: cc.Node = null;
@@ -18,6 +19,8 @@ export default class Player extends cc.Component {
     leftPos: cc.Node = null;
     @property(cc.Node)
     rightPos: cc.Node = null;
+    @property(cc.Prefab)
+    iceBlockInfoPref: cc.Prefab = null;
 
     onLoad() {
         S.player = this;
@@ -27,7 +30,7 @@ export default class Player extends cc.Component {
         this.speed = S.data.player.speed;
     }
 
-    Walk(dir: number, midFunc = function () { }, target:Object = this) {
+    Walk(dir: number, midFunc = function () { }, target: Object = this) {
         if (this.isWalk) {
             return;
         }
@@ -52,6 +55,27 @@ export default class Player extends cc.Component {
         return function () {
             this.node.scaleX *= this.node.scaleX * dir > 0 ? -1 : 1;
         };
+    }
+
+    ReceiveIceBlock(info: S.iceBlockInfo) {
+        this.iceBlockInfo = info;
+        let iceInfoBlockIns = cc.instantiate(this.iceBlockInfoPref);
+        iceInfoBlockIns.parent = this.node.getChildByName("ice");
+        let text: cc.Label = iceInfoBlockIns.getChildByName("Text").getComponent(cc.Label);
+        console.log(info.mass);
+        text.string = Math.ceil(info.mass).toString();
+        console.log(S.data.iceBlock[info.type].color);
+        iceInfoBlockIns.color = S.data.iceBlock[info.type].color;
+    }
+
+    PushIceBlock(): S.iceBlockInfo {
+        let ret: S.iceBlockInfo = this.iceBlockInfo;
+        this.iceBlockInfo = null;
+        return ret;
+    }
+
+    FadeOutIceBlock(){
+        
     }
 
     start() {
