@@ -13,6 +13,7 @@ export default class IceController extends cc.Component {
     calcPolygons: Array<cc.Vec2> = []
     reduction: number = 0;
     color: cc.Color = null;
+    snowPos: cc.Node = null;
     // LIFE-CYCLE CALLBACKS:
 
     @property(Number)
@@ -25,6 +26,7 @@ export default class IceController extends cc.Component {
         this.rbNode = this.node.getChildByName("RigidBody");
         this.g = this.node.getChildByName("Graphic").getComponent(cc.Graphics);
         this.DEBUG_mass = this.node.getChildByName("DEBUG_MASS");
+        this.snowPos = this.node.getChildByName("SnowPos");
         this.DEBUG_mass.color = this.color;
         this.rotationOffset = this.node.rotation;
     }
@@ -39,12 +41,14 @@ export default class IceController extends cc.Component {
         }
         let rb = this.rbNode.getComponent(cc.PhysicsPolygonCollider);
         this.calcPolygons[0] = cc.v2(0, 0);
-        let angle = 120 / (this.radius.length - 1);
-        for (var i = 0; i < this.radius.length; i++) {
+        let len = this.radius.length;
+        let angle = 120 / (len - 1);
+        for (var i = 0; i < len; i++) {
             this.calcPolygons[i + 1] = cc.v2(0, this.radius[i]).rotate(-S.DegsToRads(angle * i));
-            // console.log(calcPolygons);
         }
         rb.points = this.calcPolygons;
+        this.snowPos.position = cc.v2(0, this.radius[len / 2] + 2).rotate(-S.DegsToRads(60));
+        console.log(this.snowPos.position);
         rb.apply();
     }
 

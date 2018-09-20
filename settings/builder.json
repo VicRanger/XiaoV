@@ -2,7 +2,9 @@
   "appKey": "",
   "appSecret": "",
   "encryptJs": true,
-  "excludeScenes": [],
+  "excludeScenes": [
+    "172cdee8-a928-4411-827d-3a4f4ce0652f"
+  ],
   "fb-instant-games": {},
   "includeAnySDK": false,
   "includeSDKBox": false,
@@ -25,7 +27,7 @@
     "REMOTE_SERVER_ROOT": "",
     "orientation": "portrait"
   },
-  "startScene": "e9f494c2-5bc7-49b6-b0c1-3f4ed3f46de4",
+  "startScene": "ae0af181-0ee7-46b7-9972-e396d5876e3a",
   "title": "XiaoV",
   "webOrientation": "auto",
   "wechatgame": {

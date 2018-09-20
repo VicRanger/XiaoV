@@ -23,7 +23,7 @@ export default class Canvas extends cc.Component {
     start() {
         this.g.strokeColor = cc.color(0, 255, 0, 255);
     }
-    
+
     onTouchStart(e: cc.Event.EventTouch) {
         this.sp = e.getLocation();
         // S.player.node.position = this.node.convertToNodeSpaceAR(e.getLocation());
@@ -36,6 +36,9 @@ export default class Canvas extends cc.Component {
         this.g.stroke();
     }
     onTouchEnd(e: cc.Event.EventTouch) {
+        if (this.sp.sub(this.ep).mag() < 3) {
+            return;
+        }
         var dir = this.sp.sub(this.ep).normalize();
         var para1 = dir.cross(cc.v2(1, 0));
         var para2 = dir.cross(cc.v2(0, 1));
@@ -48,7 +51,7 @@ export default class Canvas extends cc.Component {
                         break;
                     case 1:
                         S.game.node.emit('slideup', S.game);
-                        break;    
+                        break;
                     case 2:
                         S.game.node.emit('slideleft', S.game);
                         break;
@@ -60,6 +63,6 @@ export default class Canvas extends cc.Component {
             }
         }
     }
-    update () {
+    update() {
     }
 }

@@ -37,10 +37,10 @@ export default class iceBlockController extends cc.Component {
             }
         }
     }
-    Install(type: string = "yellow", mass: number = 10) {
-        this.type = type;
-        this.mass = mass;
-        this.node.color = S.data.iceBlock[type].color;
+    Install(info:S.iceBlockInfo) {
+        this.type = info.type;
+        this.mass = info.mass;
+        this.node.color = S.data.iceBlock[info.type].color;
     }
     MoveToIces() {
         S.SetParent(this.node, this.node.parent.parent);

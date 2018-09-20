@@ -18,11 +18,10 @@ export default class Game extends cc.Component {
     }
 
     onSlideLeft() {
-        S.player.Walk(-1);
+        S.player.Walk(-1, this.RecycleIceBlock, this);
     }
 
     onSlideRight() {
-        this.AddIceBlockInfo();
         S.player.Walk(1, this.PushNextIceBlock, this);
     }
 
@@ -36,10 +35,18 @@ export default class Game extends cc.Component {
     }
 
     onSlideDown() {
-        S.player.ReceiveIceBlock(this.GenerateIceBlockInfo());
-
+        this.AddIceBlockInfo();
+        S.player.ReceiveIceBlock(this.PopIceBlockInfo());
     }
 
+    RecycleIceBlock() {
+        let info: S.iceBlockInfo = S.player.PushIceBlock();
+        if (info == null) {
+            console.log("Game.js : 玩家没有持有冰块");
+            return;
+        }
+        S.player.FadeOutIceBlock();
+    }
     //推入一个可用冰块
     PushNextIceBlock() {
         let info: S.iceBlockInfo = S.player.PushIceBlock();
@@ -47,7 +54,8 @@ export default class Game extends cc.Component {
             console.log("Game.js : 玩家没有持有冰块");
             return;
         }
-        S.spoutController.GenerateIceBlock(info.type, info.mass);
+        S.spoutController.GenerateIceBlock(info);
+        S.player.FadeOutIceBlock();
     }
 
     //随机产生一个冰块

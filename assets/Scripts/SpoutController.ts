@@ -20,13 +20,13 @@ export default class SpoutController extends cc.Component {
     }
 
     start() {
-        this.GenerateIceBlock();
+        this.GenerateIceBlock(new S.iceBlockInfo("yellow",10));
     }
 
-    GenerateIceBlock(type: string = "yellow", mass: number = 10) {
+    GenerateIceBlock(info:S.iceBlockInfo) {
         let iceBlockIns = cc.instantiate(this.iceBlockPref);
         let iceBlockController = iceBlockIns.getComponent(IceBlockController);
-        iceBlockController.Install(type, mass);
+        iceBlockController.Install(info);
         iceBlockIns.parent = this.node;
         iceBlockIns.position = this.spoutPos.position;
     }

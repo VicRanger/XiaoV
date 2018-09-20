@@ -4,12 +4,14 @@ import Game from "./Game";
 import IcesContoller from "./IcesController";
 import IceContoller from "./IceController";
 import SpoutController from "./SpoutController";
+import SnowMakerController from "./SnowMakerController";
 export module S {
     export var canvas: Canvas = null;
     export var player: Player = null;
     export var game: Game = null;
     export var icesController: IcesContoller = null;
     export var spoutController: SpoutController = null;
+    export var snowMakerController: SnowMakerController = null;
     export var iceInPlayer: cc.Node = null;
     export var SLIDE_DIR: Array<Array<number>> = [[0, -1], [1, 0], [0, 1], [-1, 0]];
     export var DEBUG_DIR: Array<string> = ["右划", "上划", "左划", "下划"];
@@ -63,17 +65,17 @@ export module S {
         },
         ice: {
             red: {
-                reduction: 1.4,
+                reduction: 0.7,
                 mass: 70,
                 color: cc.color(220, 90, 105, 255)
             },
             blue: {
-                reduction: 1.6,
+                reduction: 0.8,
                 mass: 80,
                 color: cc.color(90, 161, 215, 255)
             },
             yellow: {
-                reduction: 1.8,
+                reduction: 0.9,
                 mass: 90,
                 color: cc.color(234, 234, 40, 255)
             },
