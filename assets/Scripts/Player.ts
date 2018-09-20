@@ -67,7 +67,6 @@ export default class Player extends cc.Component {
     }
 
     ReceiveIceBlock(info: S.iceBlockInfo) {
-        console.log
         if (this.isWalk) {
             console.log("Player.js : 玩家正在移动，无法获取冰块");
         }

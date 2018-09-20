@@ -1,12 +1,4 @@
-// Learn TypeScript:
-//  - [Chinese] http://docs.cocos.com/creator/manual/zh/scripting/typescript.html
-//  - [English] http://www.cocos2d-x.org/docs/creator/manual/en/scripting/typescript.html
-// Learn Attribute:
-//  - [Chinese] http://docs.cocos.com/creator/manual/zh/scripting/reference/attributes.html
-//  - [English] http://www.cocos2d-x.org/docs/creator/manual/en/scripting/reference/attributes.html
-// Learn life-cycle callbacks:
-//  - [Chinese] http://docs.cocos.com/creator/manual/zh/scripting/life-cycle-callbacks.html
-//  - [English] http://www.cocos2d-x.org/docs/creator/manual/en/scripting/life-cycle-callbacks.html
+import { S } from "./SuperManager";
 
 const { ccclass, property } = cc._decorator;
 
@@ -14,18 +6,54 @@ const { ccclass, property } = cc._decorator;
 export default class SnowMakerController extends cc.Component {
 
     @property
-    waterValue:number;
-    
+    waterValue: number = 0;
+    nextIceBlock: Array<S.iceBlockInfo> = [];
 
     onLoad() {
-
+        S.snowMakerController = this;
     }
 
     start() {
 
     }
 
-    update(){
+    update() {
 
+    }
+    RecycleIceBlock() {
+        let info: S.iceBlockInfo = S.player.PushIceBlock();
+        if (info == null) {
+            console.log("SnowMakerController.js : 玩家没有持有冰块");
+            return;
+        }
+        S.player.FadeOutIceBlock();
+    }
+
+    PushNextIceBlock() {
+        let info: S.iceBlockInfo = S.player.PushIceBlock();
+        if (info == null) {
+            console.log("Game.js : 玩家没有持有冰块");
+            return;
+        }
+        S.spoutController.GenerateIceBlock(info);
+        S.player.FadeOutIceBlock();
+    }
+
+    //随机产生一个冰块
+    GenerateIceBlockInfo(): S.iceBlockInfo {
+        return new S.iceBlockInfo(S.GenerateType(), Math.random() * 10);
+    }
+
+    //随机产生一个冰块并加入队列
+    AddIceBlockInfo(): void {
+        this.nextIceBlock.push(this.GenerateIceBlockInfo());
+    }
+
+    //从队列里取一个冰块
+    PopIceBlockInfo(): S.iceBlockInfo {
+        if (this.nextIceBlock.length > 0) {
+            return this.nextIceBlock.shift();
+        }
+        return null;
     }
 }

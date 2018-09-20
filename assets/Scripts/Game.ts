@@ -4,10 +4,6 @@ import { S } from "./SuperManager";
 @ccclass
 export default class Game extends cc.Component {
 
-    @property
-    nextIceBlock: Array<S.iceBlockInfo> = [];
-
-
     onLoad() {
         S.game = this;
         this.node.on("slideleft", this.onSlideLeft, this);
@@ -18,11 +14,20 @@ export default class Game extends cc.Component {
     }
 
     onSlideLeft() {
-        S.player.Walk(-1, this.RecycleIceBlock, this);
+        if (S.player.iceBlockInfo == null) {
+            console.log("Game.js : 玩家没有持有冰块");
+            return;
+        }
+        console.log(S.player.iceBlockInfo);
+        S.player.Walk(-1, S.snowMakerController.RecycleIceBlock, this);
     }
 
     onSlideRight() {
-        S.player.Walk(1, this.PushNextIceBlock, this);
+        if (S.player.iceBlockInfo == null) {
+            console.log("Game.js : 玩家没有持有冰块");
+            return;
+        }
+        S.player.Walk(1, S.snowMakerController.PushNextIceBlock, this);
     }
 
     onSlideUp() {
@@ -35,46 +40,13 @@ export default class Game extends cc.Component {
     }
 
     onSlideDown() {
-        this.AddIceBlockInfo();
-        S.player.ReceiveIceBlock(this.PopIceBlockInfo());
+        S.snowMakerController.AddIceBlockInfo();
+        S.player.ReceiveIceBlock(S.snowMakerController.PopIceBlockInfo());
     }
 
-    RecycleIceBlock() {
-        let info: S.iceBlockInfo = S.player.PushIceBlock();
-        if (info == null) {
-            console.log("Game.js : 玩家没有持有冰块");
-            return;
-        }
-        S.player.FadeOutIceBlock();
-    }
+
     //推入一个可用冰块
-    PushNextIceBlock() {
-        let info: S.iceBlockInfo = S.player.PushIceBlock();
-        if (info == null) {
-            console.log("Game.js : 玩家没有持有冰块");
-            return;
-        }
-        S.spoutController.GenerateIceBlock(info);
-        S.player.FadeOutIceBlock();
-    }
 
-    //随机产生一个冰块
-    GenerateIceBlockInfo(): S.iceBlockInfo {
-        return new S.iceBlockInfo(S.GenerateType(), Math.random() * 10);
-    }
-
-    //随机产生一个冰块并加入队列
-    AddIceBlockInfo(): void {
-        this.nextIceBlock.push(this.GenerateIceBlockInfo());
-    }
-
-    //从队列里取一个冰块
-    PopIceBlockInfo(): S.iceBlockInfo {
-        if (this.nextIceBlock.length > 0) {
-            return this.nextIceBlock.shift();
-        }
-        return null;
-    }
 
     start() {
 

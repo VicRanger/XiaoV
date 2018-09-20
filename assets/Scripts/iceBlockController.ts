@@ -23,6 +23,7 @@ export default class iceBlockController extends cc.Component {
     onBeginContact(contact: cc.PhysicsContact, selfCollider: cc.PhysicsCollider, otherCollider: cc.PhysicsCollider) {
         if (this.isTrig) return;
         if (otherCollider.node.group == "ice") {
+            console.log(this);
             this.isTrig = true;
             this.node.removeComponent(cc.PhysicsBoxCollider);
             this.node.removeComponent(cc.RigidBody);
@@ -37,7 +38,7 @@ export default class iceBlockController extends cc.Component {
             }
         }
     }
-    Install(info:S.iceBlockInfo) {
+    Install(info: S.iceBlockInfo) {
         this.type = info.type;
         this.mass = info.mass;
         this.node.color = S.data.iceBlock[info.type].color;

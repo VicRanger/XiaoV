@@ -48,7 +48,7 @@ export default class IceController extends cc.Component {
         }
         rb.points = this.calcPolygons;
         this.snowPos.position = cc.v2(0, this.radius[len / 2] + 2).rotate(-S.DegsToRads(60));
-        console.log(this.snowPos.position);
+        // console.log(this.snowPos.position);
         rb.apply();
     }
 
