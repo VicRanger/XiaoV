@@ -7,9 +7,8 @@ export default class Player extends cc.Component {
 
     @property
     anim: cc.Animation = null;
-
-    @property
-    speed: number = 600;
+    walkDuration: number = 0;
+    iceUnit: number = 0;
     isWalk: boolean = false;
     iceBlockInfo: S.iceBlockInfo = null;
     iceBlockInfoIns: cc.Node = null;
@@ -28,31 +27,36 @@ export default class Player extends cc.Component {
         this.anim = this.getComponent(cc.Animation);
         this.anim.play('idle');
         this.node.position = this.startPos.position;
-        this.speed = S.data.player.speed;
+        this.walkDuration = S.data.player.walkDuration;
+        this.iceUnit = S.data.player.iceUnit;
     }
 
-    Walk(dir: number, midFunc = function () { }, target: Object = this) {
+    Walk(dir: number, midFunc = function () { }, midTarget: Object = this, endFunc = function () { }, endTarget: Object = this) {
         if (this.isWalk) {
             return;
         }
         this.isWalk = true;
         this.anim.play('walk');
-        var callback = cc.callFunc(function () {
+        var endWalkCallback = cc.callFunc(function () {
             this.anim.play('idle');
             this.isWalk = false;
-            console.log(this.node.scaleX);
+            // console.log(this.node.scaleX);
             if (this.node.scaleX < 0) {
                 this.node.scaleX *= -1;
             }
         }, this);
-        var midCallBack = cc.callFunc(midFunc, target);
+        var midCallBack = cc.callFunc(midFunc, midTarget);
+        var endCallBack = cc.callFunc(endFunc, endTarget);
         var seq = cc.sequence(
             cc.callFunc(this.chgDirFunc(dir, 1), this),
-            cc.moveTo(0.5, dir > 0 ? this.rightPos.position : this.leftPos.position, 0).easing(cc.easeCubicActionInOut()),
+            cc.moveTo(
+                this.walkDuration * this.iceBlockInfo.mass / this.iceUnit, dir > 0 ? this.rightPos.position : this.leftPos.position, 0)
+                .easing(cc.easeCubicActionInOut()),
             midCallBack,
             cc.callFunc(this.chgDirFunc(-dir, 2), this),
-            cc.moveTo(0.5, this.startPos.position, 0).easing(cc.easeCubicActionInOut()),
-            callback);
+            cc.moveTo(this.walkDuration, this.startPos.position, 0).easing(cc.easeCubicActionInOut()),
+            endCallBack,
+            endWalkCallback);
         this.node.runAction(seq);
     }
 
@@ -69,6 +73,7 @@ export default class Player extends cc.Component {
     ReceiveIceBlock(info: S.iceBlockInfo) {
         if (this.isWalk) {
             console.log("Player.js : 玩家正在移动，无法获取冰块");
+            return;
         }
         if (this.iceBlockInfo != null) {
             console.log("Player.js : 玩家已经持有冰块了");
@@ -78,15 +83,17 @@ export default class Player extends cc.Component {
         this.iceBlockInfoIns = cc.instantiate(this.iceBlockInfoPref);
         this.iceBlockInfoIns.parent = this.node.getChildByName("ice");
         let text: cc.Label = this.iceBlockInfoIns.getChildByName("Text").getComponent(cc.Label);
-        console.log(info.mass);
+        // console.log(info.mass);
         text.string = Math.ceil(info.mass).toString();
-        console.log(S.data.iceBlock[info.type].color);
+        // console.log(S.data.iceBlock[info.type].color);
         this.iceBlockInfoIns.color = S.data.iceBlock[info.type].color;
     }
 
     PushIceBlock(): S.iceBlockInfo {
-        let ret: S.iceBlockInfo = this.iceBlockInfo;
-        this.iceBlockInfo = null;
+        let ret = this.iceBlockInfo;
+        if (ret) {
+            this.iceBlockInfo = null;
+        }
         return ret;
     }
 

@@ -48,7 +48,6 @@ export default class IceController extends cc.Component {
         }
         rb.points = this.calcPolygons;
         this.snowPos.position = cc.v2(0, this.radius[len / 2] + 2).rotate(-S.DegsToRads(60));
-        // console.log(this.snowPos.position);
         rb.apply();
     }
 
@@ -77,6 +76,7 @@ export default class IceController extends cc.Component {
         this.DEBUG_mass.rotation = -S.icesController.node.rotation - this.rotationOffset;
         if (this.mass - dt * this.reduction > 1) {
             this.mass -= dt * this.reduction;
+            S.game.ApplyScore(dt * this.reduction);
         }
         this.DEBUG_mass.getComponent(cc.Label).string = parseInt(this.mass.toString()).toString();
     }

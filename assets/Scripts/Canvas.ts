@@ -11,6 +11,7 @@ export default class Canvas extends cc.Component {
     g: cc.Graphics = null;
     sp: cc.Vec2 = null;
     ep: cc.Vec2 = null;
+    isTouchMoved: boolean = false;
 
     onLoad() {
         S.canvas = this;
@@ -29,6 +30,7 @@ export default class Canvas extends cc.Component {
         // S.player.node.position = this.node.convertToNodeSpaceAR(e.getLocation());
     }
     onTouchMove(e: cc.Event.EventTouch) {
+        this.isTouchMoved = true;
         this.ep = e.getLocation();
         this.g.clear();
         this.g.moveTo(this.sp.x, this.sp.y);
@@ -36,15 +38,20 @@ export default class Canvas extends cc.Component {
         this.g.stroke();
     }
     onTouchEnd(e: cc.Event.EventTouch) {
-        if (this.sp.sub(this.ep).mag() < 3) {
+        if (!this.isTouchMoved) {
             return;
         }
+        // console.log(this.sp.sub(this.ep).mag());
+        if (this.sp.sub(this.ep).mag() < 40) {
+            return;
+        }
+        this.isTouchMoved = false;
         var dir = this.sp.sub(this.ep).normalize();
         var para1 = dir.cross(cc.v2(1, 0));
         var para2 = dir.cross(cc.v2(0, 1));
         for (var i = 0; i < 4; i++) {
             if (S.AbsSub(para1, S.SLIDE_DIR[i][0]) + S.AbsSub(para2, S.SLIDE_DIR[i][1]) < 0.3) {
-                console.log(S.DEBUG_DIR[i]);
+                // console.log(S.DEBUG_DIR[i]);
                 switch (i) {
                     case 0:
                         S.game.node.emit('slideright', S.game);

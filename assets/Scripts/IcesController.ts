@@ -13,7 +13,7 @@ export default class IcesController extends cc.Component {
         S.icesController = this;
         this.rotateAngle = S.data.ices.rotateAngle;
         this.ices = this.node.getComponentsInChildren('IceController');
-        console.log("ices onload");
+        // console.log("ices onload");
     }
     start() {
         this.CalcRadius();

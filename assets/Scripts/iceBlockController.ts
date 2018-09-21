@@ -12,7 +12,8 @@ export default class iceBlockController extends cc.Component {
     isTrig: boolean = false;
 
     start() {
-
+        let rb = this.getComponent(cc.RigidBody);
+        rb.gravityScale = this.mass / 2 + 1;
     }
     onLoad() {
 
@@ -23,18 +24,19 @@ export default class iceBlockController extends cc.Component {
     onBeginContact(contact: cc.PhysicsContact, selfCollider: cc.PhysicsCollider, otherCollider: cc.PhysicsCollider) {
         if (this.isTrig) return;
         if (otherCollider.node.group == "ice") {
-            console.log(this);
+            // console.log(this);
             this.isTrig = true;
             this.node.removeComponent(cc.PhysicsBoxCollider);
             this.node.removeComponent(cc.RigidBody);
             let iceController: IceController = otherCollider.node.parent.getComponent(IceController);
-            console.log(this.type)
+            // console.log(this.type)
             if (iceController.type == this.type) {
                 this.Matches();
-                iceController.mass += 10;
+                iceController.mass += this.mass;
+                S.game.ApplyScore(this.mass, true);
             } else {
                 this.NotMatches();
-                iceController.mass -= 2;
+                iceController.mass -= this.mass / 2;
             }
         }
     }

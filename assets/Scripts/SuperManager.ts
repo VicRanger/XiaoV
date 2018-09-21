@@ -45,10 +45,11 @@ export module S {
     export var data = {
         colors: ["red", "blue", "yellow"],
         player: {
-            speed: 300,
+            walkDuration: 0.5,
+            iceUnit: 10
         },
         ices: {
-            rotateAngle: 15,
+            rotateAngle: 20,
             smoothFrac: [2, 3, 5, 8, 12, 17, 23, 30, 38],
             // smoothFrac: [2, 4, 10, 18, 28, 40, 54, 70, 88],
         },

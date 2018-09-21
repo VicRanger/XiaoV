@@ -20,6 +20,7 @@ export default class SnowMakerController extends cc.Component {
     update() {
 
     }
+
     RecycleIceBlock() {
         let info: S.iceBlockInfo = S.player.PushIceBlock();
         if (info == null) {
@@ -32,7 +33,7 @@ export default class SnowMakerController extends cc.Component {
     PushNextIceBlock() {
         let info: S.iceBlockInfo = S.player.PushIceBlock();
         if (info == null) {
-            console.log("Game.js : 玩家没有持有冰块");
+            console.log("SnowMakerController.js : 玩家没有持有冰块");
             return;
         }
         S.spoutController.GenerateIceBlock(info);
@@ -41,7 +42,7 @@ export default class SnowMakerController extends cc.Component {
 
     //随机产生一个冰块
     GenerateIceBlockInfo(): S.iceBlockInfo {
-        return new S.iceBlockInfo(S.GenerateType(), Math.random() * 10);
+        return new S.iceBlockInfo(S.GenerateType(), Math.random() * 20 + 1);
     }
 
     //随机产生一个冰块并加入队列
