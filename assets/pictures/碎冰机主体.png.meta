@@ -1,0 +1,31 @@
+{
+  "ver": "2.2.0",
+  "uuid": "7b0bff5f-0ce3-4bc2-92cd-202f7f4b74e1",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "subMetas": {
+    "碎冰机主体": {
+      "ver": "1.0.3",
+      "uuid": "6a67e997-9b10-4d47-b14d-91f4fc595b95",
+      "rawTextureUuid": "7b0bff5f-0ce3-4bc2-92cd-202f7f4b74e1",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 120,
+      "height": 131,
+      "rawWidth": 120,
+      "rawHeight": 131,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

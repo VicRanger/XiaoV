@@ -20,7 +20,7 @@ export default class SpoutController extends cc.Component {
     }
 
     start() {
-        this.GenerateIceBlock(new S.iceBlockInfo("yellow",10));
+        
     }
 
     GenerateIceBlock(info:S.iceBlockInfo) {

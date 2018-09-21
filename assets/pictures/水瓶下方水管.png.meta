@@ -1,0 +1,31 @@
+{
+  "ver": "2.2.0",
+  "uuid": "ac429ac6-cd1a-49ea-bb28-45955675d003",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "subMetas": {
+    "水瓶下方水管": {
+      "ver": "1.0.3",
+      "uuid": "e6befe62-aaf8-4e35-9254-dbd7141e4f31",
+      "rawTextureUuid": "ac429ac6-cd1a-49ea-bb28-45955675d003",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 46,
+      "height": 57,
+      "rawWidth": 46,
+      "rawHeight": 57,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

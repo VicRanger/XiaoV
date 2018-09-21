@@ -1,0 +1,31 @@
+{
+  "ver": "2.2.0",
+  "uuid": "a41b3b93-600b-4eb8-8c4e-4bf18669c483",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "subMetas": {
+    "制冰机玻璃": {
+      "ver": "1.0.3",
+      "uuid": "0d5cb10e-3fe1-4062-9bc3-f410ad28b4cc",
+      "rawTextureUuid": "a41b3b93-600b-4eb8-8c4e-4bf18669c483",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 155,
+      "height": 118,
+      "rawWidth": 155,
+      "rawHeight": 118,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

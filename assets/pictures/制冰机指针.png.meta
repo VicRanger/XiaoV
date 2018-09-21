@@ -1,0 +1,31 @@
+{
+  "ver": "2.2.0",
+  "uuid": "46075599-f443-47d2-aee2-89e0bf0f95f7",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "subMetas": {
+    "制冰机指针": {
+      "ver": "1.0.3",
+      "uuid": "773b0434-bfcf-4be3-93ae-b40d91c2bc32",
+      "rawTextureUuid": "46075599-f443-47d2-aee2-89e0bf0f95f7",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 19,
+      "height": 63,
+      "rawWidth": 19,
+      "rawHeight": 63,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

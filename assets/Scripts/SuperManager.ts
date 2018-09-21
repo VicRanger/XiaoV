@@ -5,6 +5,7 @@ import IcesContoller from "./IcesController";
 import IceContoller from "./IceController";
 import SpoutController from "./SpoutController";
 import SnowMakerController from "./SnowMakerController";
+import AudioManager from "./AudioManager";
 export module S {
     export var canvas: Canvas = null;
     export var player: Player = null;
@@ -13,6 +14,7 @@ export module S {
     export var spoutController: SpoutController = null;
     export var snowMakerController: SnowMakerController = null;
     export var iceInPlayer: cc.Node = null;
+    export var audioManager: AudioManager = null;
     export var SLIDE_DIR: Array<Array<number>> = [[0, -1], [1, 0], [0, 1], [-1, 0]];
     export var DEBUG_DIR: Array<string> = ["右划", "上划", "左划", "下划"];
     export var DegsToRads: Function = function (x: number) {

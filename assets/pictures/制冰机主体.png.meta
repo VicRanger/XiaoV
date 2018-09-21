@@ -1,0 +1,31 @@
+{
+  "ver": "2.2.0",
+  "uuid": "3d88b16d-b5a0-43d6-bad7-aac5f216e046",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "subMetas": {
+    "制冰机主体": {
+      "ver": "1.0.3",
+      "uuid": "db9ff693-1b91-4ae6-b8c2-6e7a296a8eb5",
+      "rawTextureUuid": "3d88b16d-b5a0-43d6-bad7-aac5f216e046",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 427,
+      "height": 236,
+      "rawWidth": 427,
+      "rawHeight": 236,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

@@ -68,7 +68,7 @@ export default class IceController extends cc.Component {
         this.g.stroke();
     }
 
-    update(dt) {
+    GameUpdate(dt) {
         this.CalcPolygons();
         this.DrawPolygons();
         this.rbNode.rotation = this.node.rotation - this.rotationOffset;

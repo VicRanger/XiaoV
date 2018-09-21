@@ -40,7 +40,6 @@ export default class Player extends cc.Component {
         var endWalkCallback = cc.callFunc(function () {
             this.anim.play('idle');
             this.isWalk = false;
-            // console.log(this.node.scaleX);
             if (this.node.scaleX < 0) {
                 this.node.scaleX *= -1;
             }

@@ -1,0 +1,31 @@
+{
+  "ver": "2.2.0",
+  "uuid": "7f98f551-e322-40f3-bdab-75b8e608b310",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "subMetas": {
+    "水瓶的玻璃": {
+      "ver": "1.0.3",
+      "uuid": "10740217-da78-4d52-9bf4-66cf617f09d0",
+      "rawTextureUuid": "7f98f551-e322-40f3-bdab-75b8e608b310",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 222,
+      "height": 366,
+      "rawWidth": 222,
+      "rawHeight": 366,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
